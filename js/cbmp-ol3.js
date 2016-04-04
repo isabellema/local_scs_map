@@ -154,7 +154,7 @@ var cbmp = {
                 //zoom only the first position (enables the user to adjust zoom)
                 if (zoomOnFirstTracking) {
                     //zoom in
-                    myView.setZoom(10);
+                    myView.setZoom(15);
                     zoomOnFirstTracking=false;
                 }
             });
@@ -380,8 +380,8 @@ var cbmp = {
             
             //create the view
             myView =new ol.View({
-                center: ol.proj.transform([2.34, 48.82], 'EPSG:4326', 'EPSG:3857'), 
-                zoom: 5,
+		    center: ol.proj.transform([5.31172, 43.71491], 'EPSG:4326', 'EPSG:3857'), 
+                zoom: 15,
                 minZoom:minZoomSetting,
                 maxZoom:maxZoomSetting
             });
