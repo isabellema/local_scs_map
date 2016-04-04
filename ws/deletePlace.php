@@ -10,7 +10,7 @@
         if($settings->getSettingValue('cbmp_application_EditLocation')=='enabled' && $settings->getSettingValue('cbmp_application_DeleteLocation')=='enabled'){
             $id = intval($_POST['id']);
         
-            $sql = "DELETE FROM place WHERE id=$id";
+            $sql = "DELETE FROM scs_places WHERE id=$id";
         
             $result = mysql_query($sql);
         }

@@ -3,10 +3,10 @@
 
     db_connect();
 
-    $sql = "SELECT DISTINCT place.id as id, place.name as place, lat, lng, category.name as category, category.clustercolor as color FROM place, category WHERE place.id_category=category.id";
+    $sql = "SELECT DISTINCT scs_places.id as id, scs_places.name as place, lat, lng, scs_categories.name as category, scs_categories.clustercolor as color FROM place, category WHERE scs_places.id_category=scs_categories.id";
     if(isset($_GET['q'])){
         $filter = mysql_real_escape_string($_GET['q']);
-        $sql .= " AND place.name like '%$filter%'";
+        $sql .= " AND scs_places.name like '%$filter%'";
     }
     $result = mysql_query($sql);
 ?>

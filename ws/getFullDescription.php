@@ -5,7 +5,7 @@
 
     if(isset($_GET['id'])){
         $id = intval($_GET['id']);
-        $sql = "SELECT description FROM place WHERE place.id=$id";
+        $sql = "SELECT description FROM scs_places WHERE scs_places.id=$id";
 
         $result = mysql_query($sql);
 ?>

@@ -17,7 +17,7 @@ if(isset($_GET['lat']) && strlen(trim($_GET['lat'])) > 0 && isset($_GET['lng']) 
     <input type='hidden' name='lng' value='<?=$lng?>'/>
     <?php
     db_connect();
-    $query="SELECT id, name FROM category";
+    $query="SELECT id, name FROM scs_categories";
     
     $result = mysql_query($query);
     if($result){

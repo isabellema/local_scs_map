@@ -12,7 +12,7 @@ class CBMPSettings {
     }
     
     private function loadValuesFromDB(){
-        $sql = "SELECT id, name, value FROM config";
+        $sql = "SELECT id, name, value FROM scs_config";
         $result = mysql_query($sql);
         
         $this->params = array();
@@ -41,7 +41,7 @@ class CBMPSettings {
         $name = trim(mysql_real_escape_string($key));
         $value = trim(mysql_real_escape_string($value));
         if($name!=''){
-            $sql= "INSERT INTO config(name, value) VALUES('$name', '$value')";
+            $sql= "INSERT INTO scs_config(name, value) VALUES('$name', '$value')";
             
             mysql_query($sql);
             
@@ -56,7 +56,7 @@ class CBMPSettings {
     public function update($id, $value){
         $id=intval($id);
         $value=trim(mysql_real_escape_string($value));
-        $sql="UPDATE config SET setting_value='$value' WHERE id=$id";
+        $sql="UPDATE scs_config SET setting_value='$value' WHERE id=$id";
         mysql_query($sql);
         
         $this->loadValuesFromDB();
@@ -66,7 +66,7 @@ class CBMPSettings {
     public function updateSettingByKey($key, $value){
         $key = trim(mysql_real_escape_string($key));
         $value = trim(mysql_real_escape_string($value));
-        $sql = "UPDATE config SET value='$value' WHERE name='$key'";
+        $sql = "UPDATE scs_config SET value='$value' WHERE name='$key'";
         
         mysql_query($sql);
         
@@ -75,7 +75,7 @@ class CBMPSettings {
     
     public function delete($param_id){
         $param_id = trim(mysql_real_escape_string($param_id));
-        $sql= "DELETE FROM config where id=$param_id";
+        $sql= "DELETE FROM scs_config where id=$param_id";
         mysql_query($sql);
         
         $this->loadValuesFromDB();

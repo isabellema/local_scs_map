@@ -8,7 +8,7 @@ require_once('script/string.php');
 if(isset($_GET['id']) && strlen(trim($_GET['id'])) > 0 ){
     db_connect();
     $id = intval($_GET['id']);
-    $sql_query = "SELECT DISTINCT place.id as id, place.name as placeName, lat, lng, description, website, facebook, twitter, category.name as category, category.id as cat_id, def_closed FROM place, category WHERE place.id_category=category.id AND place.id=$id";
+    $sql_query = "SELECT DISTINCT scs_places.id as id, scs_places.name as placeName, lat, lng, description, website, facebook, twitter, category.name as category, category.id as cat_id, def_closed FROM place, category WHERE scs_places.id_category=category.id AND scs_places.id=$id";
     $result= mysql_query($sql_query);
     
     if($result && mysql_numrows($result)>0){
@@ -25,7 +25,7 @@ if(isset($_GET['id']) && strlen(trim($_GET['id'])) > 0 ){
     <input type='text' placeholder='URL twitter' name='twitter' value='<?=$row['twitter']?>' />
     <span>Definitely Closed : <input type="checkbox" name="def_closed" <?=$row['def_closed']?'checked':''?> value="1"/></span>
     <?php
-        $query="SELECT id, name FROM category";
+        $query="SELECT id, name FROM scs_categories";
         
         $result = mysql_query($query);
         if($result){
