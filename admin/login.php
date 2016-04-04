@@ -70,7 +70,7 @@
         <input type="submit" name="submitok" value="Se connecter" />
         <br/>
         <br/>
-        <a href="resetPwd.php"  style="font-size:x-small;color:#999;">Mot de passe oubli&eacute; ?</a>
+        <!--<a href="resetPwd.php"  style="font-size:x-small;color:#999;">Mot de passe oubli&eacute; ?</a>-->
 
         <br/>
     </form>

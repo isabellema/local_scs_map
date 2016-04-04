@@ -14,10 +14,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Table structure for table `scs_categories`
 --
 
-CREATE TABLE IF NOT EXISTS `category` (
+CREATE TABLE IF NOT EXISTS `scs_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `clustercolor` varchar(6) NOT NULL,
@@ -40,10 +40,10 @@ CREATE TABLE IF NOT EXISTS `scs_config` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `place`
+-- Table structure for table `scs_places`
 --
 
-CREATE TABLE IF NOT EXISTS `place` (
+CREATE TABLE IF NOT EXISTS `scs_places` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `website` varchar(50) NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `place` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- Table structure for table `scs_roles`
 --
 
 CREATE TABLE IF NOT EXISTS `scs_roles` (
