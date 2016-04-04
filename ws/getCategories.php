@@ -3,7 +3,7 @@
 
     db_connect();
 
-    $sql = "SELECT DISTINCT category.name as name FROM category ";
+    $sql = "SELECT DISTINCT scs_categories.name as name FROM scs_categories ";
     
     $result = mysql_query($sql);
 ?>

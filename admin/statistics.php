@@ -50,10 +50,10 @@ if(strlen(trim($cbmpTitlePage))==0){
         <h1>Statistics</h1>
       
         <?php
-        $sql="SELECT category.name as name, count( * ) AS number
-	      FROM place, category
-	      WHERE place.id_category = category.id
-	      GROUP BY id_category, category.name
+        $sql="SELECT scs_categories.name as name, count( * ) AS number
+	      FROM scs_places, scs_categories
+	      WHERE scs_places.id_category = scs_categories.id
+	      GROUP BY id_category, scs_categories.name
 	      ORDER BY number DESC ";
         $result = mysql_query($sql);
 	$total = 0;

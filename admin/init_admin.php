@@ -29,7 +29,7 @@
         //get the user id 
         
         //add the user ADMIN role
-        $sql = "INSERT INTO scs_userroles(userid, roleid) SELECT scs_users.id, role.id FROM scs_users, scs_roles WHERE scs_users.login='$login' AND scs_roles.name='ADMINISTRATORS'";
+        $sql = "INSERT INTO scs_userroles(userid, roleid) SELECT scs_users.id, scs_roles.id FROM scs_users, scs_roles WHERE scs_users.login='$login' AND scs_roles.name='ADMINISTRATORS'";
         $result = mysql_query($sql);
         
         

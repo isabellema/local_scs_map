@@ -29,7 +29,7 @@ if(userBelongToGroup($_SESSION['username'], 'ADMINISTRATORS')){
       $idcat = intval($_POST['idcat']);
       
       //read the old category name
-      $sql ="SELECT name FROM category where id=$idcat";
+      $sql ="SELECT name FROM scs_categories where id=$idcat";
       $result = mysql_query($sql);
       
       if($result && mysql_numrows($result)>0){
@@ -44,7 +44,7 @@ if(userBelongToGroup($_SESSION['username'], 'ADMINISTRATORS')){
 	  $newcolor = substr($newcolor, strlen($newcolor)-6, 6);
 	}
 	//renaming category in database
-	$sql= "UPDATE category SET name='$newname', clustercolor='$newcolor' WHERE id=$idcat";
+	$sql= "UPDATE scs_categories SET name='$newname', clustercolor='$newcolor' WHERE id=$idcat";
         mysql_query($sql);
       }
       else{
@@ -103,7 +103,7 @@ if(userBelongToGroup($_SESSION['username'], 'ADMINISTRATORS')){
         <h1>Categories</h1>
       
         <?php
-        $sql="select id,name, clustercolor FROM category";
+        $sql="select id,name, clustercolor FROM scs_categories";
         $result = mysql_query($sql);        
         ?>
         
