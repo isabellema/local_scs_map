@@ -7,7 +7,7 @@ class CBMPSettings {
     }
     
     private function loadDatasFromDB(){
-        $sql = "SELECT id_param, param_name, param_value FROM config ";
+        $sql = "SELECT id_param, param_name, param_value FROM scs_config ";
         $result = mysql_query($sql);
         
         $this->params = array();

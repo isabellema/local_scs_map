@@ -27,10 +27,10 @@ CREATE TABLE IF NOT EXISTS `category` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `config`
+-- Table structure for table `scs_config`
 --
 
-CREATE TABLE IF NOT EXISTS `config` (
+CREATE TABLE IF NOT EXISTS `scs_config` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `value` varchar(100) NOT NULL,
@@ -60,10 +60,10 @@ CREATE TABLE IF NOT EXISTS `place` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- Table structure for table `roles`
 --
 
-CREATE TABLE IF NOT EXISTS `role` (
+CREATE TABLE IF NOT EXISTS `scs_roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
@@ -72,10 +72,10 @@ CREATE TABLE IF NOT EXISTS `role` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `scs_users`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE IF NOT EXISTS `scs_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -87,10 +87,10 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userrole`
+-- Table structure for table `scs_userroles`
 --
 
-CREATE TABLE IF NOT EXISTS `userrole` (
+CREATE TABLE IF NOT EXISTS `scs_userroles` (
   `userid` int(11) NOT NULL,
   `roleid` int(11) NOT NULL,
   PRIMARY KEY (`userid`,`roleid`)

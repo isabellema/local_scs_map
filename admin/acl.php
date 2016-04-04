@@ -18,7 +18,7 @@ if(userBelongToGroup($_SESSION['username'], 'ADMINISTRATORS')){
   //user is adding a new group
   if(isset($_POST['group_name_to_add']) and strlen(trim($_POST['group_name_to_add']))>0){
     $newgroup = mysql_real_escape_string(trim($_POST['group_name_to_add']));
-    $sql = "INSERT INTO role (name) VALUES('$newgroup')";
+    $sql = "INSERT INTO scs_roles (name) VALUES('$newgroup')";
     mysql_query($sql);
   }
   
@@ -28,7 +28,7 @@ if(userBelongToGroup($_SESSION['username'], 'ADMINISTRATORS')){
         $group_id = intval($_POST['role_selected']);
         $users = $_POST['users'];
         foreach($users as $userToAdd){
-            $sql = "INSERT INTO userrole(roleid,userid) VALUES($group_id, $userToAdd)";
+            $sql = "INSERT INTO scs_userroles(roleid,userid) VALUES($group_id, $userToAdd)";
             mysql_query($sql);
         }
     }
@@ -54,7 +54,7 @@ if(userBelongToGroup($_SESSION['username'], 'ADMINISTRATORS')){
   if(isset($_POST['DELETE']) and isset($_POST['userlist'])){
     $user = intval($_POST['userlist']);
     $group = intval($_POST['role_selected']);
-    $sql = "DELETE FROM userrole WHERE userid=$user AND roleid=$group";
+    $sql = "DELETE FROM scs_userroles WHERE userid=$user AND roleid=$group";
     mysql_query($sql);
   }
   
@@ -109,7 +109,7 @@ if(userBelongToGroup($_SESSION['username'], 'ADMINISTRATORS')){
         <form action="<?=$_SERVER['PHP_SELF']?>" method="POST">
       
         <?php
-        $sql="select id,name FROM role";
+        $sql="select id,name FROM scs_roles";
         $result = mysql_query($sql);        
         ?>
         
@@ -127,7 +127,7 @@ if(userBelongToGroup($_SESSION['username'], 'ADMINISTRATORS')){
         <select size=10 name="userlist" style="width:40%;">
           <?php if(isset($_POST['role_selected'])) : ?>
             <?php
-                $sql = "SELECT userid, login FROM user, userrole WHERE userrole.userid=user.id AND roleid=".$_POST['role_selected']." ORDER BY userid ASC";
+                $sql = "SELECT userid, login FROM scs_users, scs_userroles WHERE scs_userroles.userid=scs_users.id AND roleid=".$_POST['role_selected']." ORDER BY userid ASC";
                 $result = mysql_query($sql);
             ?>
               <?php if($result && mysql_num_rows($result)>0) : ?>    
@@ -166,7 +166,7 @@ if(userBelongToGroup($_SESSION['username'], 'ADMINISTRATORS')){
                 <input type="hidden" name="role_selected" value="<?=$_POST['role_selected']?>" />
             <?php
 		
-                $sql = "SELECT id,login FROM user WHERE id NOT IN (SELECT userid FROM userrole WHERE userrole.roleid=".$_POST['role_selected'].")";
+                $sql = "SELECT id,login FROM user WHERE id NOT IN (SELECT userid FROM scs_userroles WHERE scs_userroles.roleid=".$_POST['role_selected'].")";
 		$results = mysql_query($sql);
 	    ?>
                 <?php if ($results && mysql_numrows($results)>0) : ?>

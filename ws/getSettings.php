@@ -3,7 +3,7 @@
 
     db_connect();
 
-    $sql = "SELECT DISTINCT id, name, value FROM config";
+    $sql = "SELECT DISTINCT id, name, value FROM scs_config";
     /*if(isset($_GET['q'])){
         $filter = mysql_real_escape_string($_GET['q']);
         $sql .= " AND name like '%$filter%'";

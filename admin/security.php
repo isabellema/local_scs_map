@@ -21,7 +21,7 @@ function userBelongToGroup($username, $groupname){
     $belong = false;
     db_connect();
     
-    $sql= "SELECT login FROM user, role, userrole WHERE user.id=userrole.userid AND userrole.roleid=role.id AND user.login='$username' AND role.name='$groupname'";
+    $sql= "SELECT login FROM scs_users, scs_roles, scs_userroles WHERE scs_users.id=scs_userroles.userid AND scs_userroles.roleid=role.id AND scs_users.login='$username' AND scs_roles.name='$groupname'";
     $result = mysql_query($sql);
     
     if($result && mysql_numrows($result)>0){

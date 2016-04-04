@@ -6,7 +6,7 @@
     session_start();
     
     //check if database has been initialized.
-    $sql = "SELECT login FROM user, role, userrole WHERE user.id=userrole.userid AND userrole.roleid=role.id AND role.name='ADMINISTRATORS'";
+    $sql = "SELECT login FROM scs_users, scs_roles, scs_userroles WHERE scs_users.id=scs_userroles.userid AND scs_userroles.roleid=scs_roles.id AND scs_roles.name='ADMINISTRATORS'";
     $result = mysql_query($sql);
     
     if($result && mysql_numrows($result)==0){
@@ -18,7 +18,7 @@
         $uid = mysql_real_escape_string($_POST['uid']);
         $pwd = mysql_real_escape_string($_POST['pwd']);
         
-        $sql_request = "SELECT login FROM user, role, userrole WHERE user.id=userrole.userid AND userrole.roleid=role.id AND login='$uid' AND password=PASSWORD('$pwd') AND role.name='ADMINISTRATORS'";
+        $sql_request = "SELECT login FROM scs_users, scs_roles, scs_userroles WHERE scs_users.id=scs_userroles.userid AND scs_userroles.roleid=scs_roles.id AND login='$uid' AND password=PASSWORD('$pwd') AND scs_roles.name='ADMINISTRATORS'";
         $result = mysql_query($sql_request);
         
         if($result && mysql_numrows($result)>0){

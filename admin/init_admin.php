@@ -3,17 +3,17 @@
     db_connect();
         
     //check if database has been initialized.
-    $sql = "SELECT login FROM user, role, userrole WHERE user.id=userrole.userid AND userrole.roleid=role.id AND role.name='ADMINISTRATORS'";
+    $sql = "SELECT login FROM scs_users, scs_roles, scs_userroles WHERE scs_users.id=scs_userroles.userid AND scs_userroles.roleid=scs_roles.id AND scs_roles.name='ADMINISTRATORS'";
     $result = mysql_query($sql);
     if($result && mysql_num_rows($result)>0)header('Location:login.php');
     
     //user is creating 
     if(isset($_POST['login']) && isset($_POST['pwd'])){
         //create the admin role if doesn't exist
-        $sql = "SELECT name FROM role WHERE role.name='ADMINISTRATORS'";
+        $sql = "SELECT name FROM scs_roles WHERE scs_roles.name='ADMINISTRATORS'";
         $result = mysql_query($sql);
         if($result && mysql_numrows($result)==0){
-            $sql = "INSERT INTO role SET role.name='ADMINISTRATORS'";
+            $sql = "INSERT INTO scs_roles SET scs_roles.name='ADMINISTRATORS'";
             $result = mysql_query($sql);
         }
         
@@ -23,13 +23,13 @@
         $email = mysql_real_escape_string($_POST['email']);
         
         //creates the user in table user
-        $sql_request = "INSERT INTO user SET login='$login', email='$email',password=PASSWORD('$pwd')";
+        $sql_request = "INSERT INTO scs_users SET login='$login', email='$email',password=PASSWORD('$pwd')";
         $result = mysql_query($sql_request);
         
         //get the user id 
         
         //add the user ADMIN role
-        $sql = "INSERT INTO userrole(userid, roleid) SELECT user.id, role.id FROM user, role WHERE user.login='$login' AND role.name='ADMINISTRATORS'";
+        $sql = "INSERT INTO scs_userroles(userid, roleid) SELECT scs_users.id, role.id FROM scs_users, scs_roles WHERE scs_users.login='$login' AND scs_roles.name='ADMINISTRATORS'";
         $result = mysql_query($sql);
         
         
