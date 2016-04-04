@@ -52,7 +52,7 @@
             $lat =  intval($_POST['lat']*1000000);
             $lng = intval($_POST['lng']*1000000);
             
-            $sql = "INSERT INTO scs_places(name, description, lat, lng, website, id_category, facebook, twitter, def_closed) VALUES('$name', '$desc', $lat, $lng, '$website', $id_cat, '$facebook', '$twitter', $def_closed)";
+            $sql = "INSERT INTO scs_places(name, description, lat, lng, website, id_category, facebook, twitter) VALUES('$name', '$desc', $lat, $lng, '$website', $id_cat, '$facebook', '$twitter')";
         }
         
         $result = mysql_query($sql);
