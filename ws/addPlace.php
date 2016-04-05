@@ -31,20 +31,12 @@
             $twitter = "http://".$twitter;
         }
         
-        //managing checkbox "def_closed" : true/false
-        $def_closed = 0;
-        if($_POST['def_closed']){
-            $def_closed = 1;
-        }
-        
-        
-        
         //inserting new entry
         if(isset($_POST['id']) and strlen($_POST['id'])>0){
             //we verify if editing is enable
             if($settings->getSettingValue('cbmp_application_EditLocation')=='enabled'){
                 $id = intval($_POST['id']);
-                $sql = "UPDATE scs_places set name='$name', description='$desc', website='$website', id_category=$id_cat, facebook='$facebook', twitter='$twitter', def_closed=$def_closed WHERE id=$id";
+                $sql = "UPDATE scs_places set name='$name', description='$desc', website='$website', id_category=$id_cat, facebook='$facebook', twitter='$twitter' WHERE id=$id";
             }
         }
         else{

@@ -8,7 +8,7 @@ require_once('script/string.php');
 if(isset($_GET['id']) && strlen(trim($_GET['id'])) > 0 ){
     db_connect();
     $id = intval($_GET['id']);
-    $sql_query = "SELECT DISTINCT scs_places.id as id, scs_places.name as placeName, lat, lng, description, website, facebook, twitter, category.name as category, category.id as cat_id, def_closed FROM place, category WHERE scs_places.id_category=category.id AND scs_places.id=$id";
+    $sql_query = "SELECT DISTINCT scs_places.id as id, scs_places.name as placeName, lat, lng, description, website, facebook, twitter, scs_categories.name as category, scs_categories.id as cat_id FROM scs_places, scs_categories WHERE scs_places.id_category=scs_categories.id AND scs_places.id=$id";
     $result= mysql_query($sql_query);
     
     if($result && mysql_numrows($result)>0){
@@ -23,7 +23,7 @@ if(isset($_GET['id']) && strlen(trim($_GET['id'])) > 0 ){
     <input type='text' placeholder='http://' name='website' value='<?=$row['website']?>' />
     <input type='text' placeholder='URL Facebook' name='facebook' value='<?=$row['facebook']?>' />
     <input type='text' placeholder='URL twitter' name='twitter' value='<?=$row['twitter']?>' />
-    <span>Definitely Closed : <input type="checkbox" name="def_closed" <?=$row['def_closed']?'checked':''?> value="1"/></span>
+<!--    <span>Definitely Closed : <input type="checkbox" name="def_closed" <?=$row['def_closed']?'checked':''?> value="1"/></span>-->
     <?php
         $query="SELECT id, name FROM scs_categories";
         
